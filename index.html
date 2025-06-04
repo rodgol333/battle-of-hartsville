@@ -5,45 +5,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Battle of Hartsville</title>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Georgia, serif;
       background-color: #fdf6ec;
       margin: 0;
       padding: 0;
       color: #2c2c2c;
+      animation: fadeInBody 1s ease-in;
     }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     header {
       background-color: #831f1f;
       color: white;
       padding: 20px;
       text-align: center;
+      animation: slideDown 1s ease-out;
     }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
     nav {
       background-color: #e6cdb5;
       padding: 10px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     nav a {
       margin: 0 15px;
       text-decoration: none;
       color: #831f1f;
       font-weight: bold;
+      position: relative;
     }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background-color: #831f1f;
+      left: 0;
+      bottom: -3px;
+      transition: width 0.3s ease-in-out;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
     section {
       padding: 20px;
       max-width: 900px;
       margin: auto;
+      opacity: 0;
+      animation: fadeInSection 1s ease forwards;
     }
+
+    section:nth-of-type(1) { animation-delay: 0.5s; }
+    section:nth-of-type(2) { animation-delay: 0.8s; }
+    section:nth-of-type(3) { animation-delay: 1.1s; }
+    section:nth-of-type(4) { animation-delay: 1.4s; }
+    section:nth-of-type(5) { animation-delay: 1.7s; }
+    section:nth-of-type(6) { animation-delay: 2.0s; }
+
+    @keyframes fadeInSection {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     h2 {
       border-bottom: 2px solid #ccc;
       padding-bottom: 5px;
     }
+
+    iframe {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      border: none;
+    }
+
     footer {
       background-color: #831f1f;
       color: white;
       text-align: center;
       padding: 10px;
       font-size: 0.9em;
+      animation: fadeInBody 1s ease-in;
     }
   </style>
 </head>
@@ -59,6 +134,7 @@
     <a href="#timeline">Timeline</a>
     <a href="#leaders">Key Figures</a>
     <a href="#outcome">Outcome</a>
+    <a href="#video">Video</a>
   </nav>
 
   <section id="overview">
@@ -75,13 +151,6 @@
     </p>
   </section>
 
-    <section id="leaders">
-    <h2>Overview</h2>
-    <p>
-      The Battle of Hartsville was a surprise attack during the American Civil War in northern Tennessee. It took place on December 7, 1862, and resulted in a Confederate victory. Confederate Colonel John Hunt Morgan led his cavalry in a swift and stealthy assault against a Union brigade commanded by Colonel Absalom B. Moore.
-    </p>
-  </section>
-
   <section id="timeline">
     <h2>Timeline</h2>
     <ul>
@@ -91,6 +160,12 @@
     </ul>
   </section>
 
+  <section id="leaders">
+    <h2>Key Figures</h2>
+    <p><strong>Confederate:</strong> Colonel John Hunt Morgan – cavalry commander known for raids behind Union lines.</p>
+    <p><strong>Union:</strong> Colonel Absalom B. Moore – led the 39th Brigade of the Army of the Ohio.</p>
+  </section>
+
   <section id="outcome">
     <h2>Outcome</h2>
     <p>
@@ -98,8 +173,15 @@
     </p>
   </section>
 
+  <section id="video">
+    <h2>The Battle Animated</h2>
+    <iframe width="900" height="500" src="https://youtu.be/8L2aSdSZXEA" title="The Battle Of Hartsville: Animated" allowfullscreen></iframe>
+    <p>Courtesy of the creator (yes, I made this)</p>
+  </section>
+
   <footer>
     <p>&copy; 2025 Hartsville History Project | All rights reserved</p>
   </footer>
 </body>
 </html>
+
